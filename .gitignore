@@ -1,0 +1,8 @@
+.phan/
+.phive/
+.phpunit.cache/
+vendor/
+metrics/
+coverage/
+tools/
+composer.lock

@@ -1,0 +1,33 @@
+{
+    "name": "martin-rieur/php-russian-requisites",
+    "type": "library",
+    "version": "0.0.1",
+    "autoload": {
+        "psr-4": {
+            "PhpRussianRequisites\\": "src/",
+            "PhpRussianRequisites\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Владислав Федоренко",
+            "email": "FedorenkoVladislav9@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "phpmetrics/phpmetrics": "^2.9",
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phan/phan": "^6.0",
+        "psalm/phar": "^6",
+        "phpunit/phpunit": "^13.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

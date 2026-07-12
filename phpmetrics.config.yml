@@ -1,0 +1,4 @@
+includes:  #  directory and files to analyze, relative to config file directory
+    - "src"
+report: # list of reports to generate
+    html: "metrics"
