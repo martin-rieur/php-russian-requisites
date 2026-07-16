@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PhpRussianRequisites\Exceptions;
 
-class ValidationFailureException extends \DomainException
+use PhpRussianRequisites\Interfaces\ExceptionInterface;
+
+class ValidationFailureException extends \DomainException implements ExceptionInterface
 {
 }
