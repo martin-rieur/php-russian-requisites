@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes;
+namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes\Grn;
 
 use Override;
 use PhpRussianRequisites\Exceptions\BadValueException;
-use PhpRussianRequisites\ValueObjects\Codes\Grn;
+use PhpRussianRequisites\ValueObjects\Codes\Grn\Grn;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Grn::class)]

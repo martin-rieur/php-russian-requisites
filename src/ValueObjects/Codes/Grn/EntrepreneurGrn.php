@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpRussianRequisites\ValueObjects\Codes;
+namespace PhpRussianRequisites\ValueObjects\Codes\Grn;
 
 use Override;
 use PhpRussianRequisites\Exceptions\TypeCastingException;

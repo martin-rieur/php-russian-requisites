@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes;
+namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes\Grn;
 
 use PhpRussianRequisites\Exceptions\BadValueException;
 use PhpRussianRequisites\Interfaces\ExceptionInterface;
-use PhpRussianRequisites\ValueObjects\Codes\Grn;
+use PhpRussianRequisites\ValueObjects\Codes\Grn\Grn;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractGrnTestCase extends TestCase

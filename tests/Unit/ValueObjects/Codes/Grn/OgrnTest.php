@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes;
+namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes\Grn;
 
 use Override;
-use PhpRussianRequisites\ValueObjects\Codes\Ogrn;
+use PhpRussianRequisites\ValueObjects\Codes\Grn\Ogrn;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(Ogrn::class)]

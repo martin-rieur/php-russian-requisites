@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes;
+namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes\Grn;
 
 use Override;
 use PhpRussianRequisites\Exceptions\TypeCastingException;
-use PhpRussianRequisites\ValueObjects\Codes\EntrepreneurGrn;
-use PhpRussianRequisites\ValueObjects\Codes\Ogrnip;
+use PhpRussianRequisites\ValueObjects\Codes\Grn\EntrepreneurGrn;
+use PhpRussianRequisites\ValueObjects\Codes\Grn\Ogrnip;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 
