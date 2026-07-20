@@ -23,7 +23,8 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phan/phan": "^6.0",
         "psalm/phar": "^6",
-        "phpunit/phpunit": "^13.2"
+        "phpunit/phpunit": "^13.2",
+        "phpstan/phpstan-strict-rules": "^2.0"
     },
     "config": {
         "allow-plugins": {

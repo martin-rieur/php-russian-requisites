@@ -1,4 +1,32 @@
+includes:
+	- vendor/phpstan/phpstan-strict-rules/rules.neon
 parameters:
+	polluteScopeWithLoopInitialAssignments: true
+	polluteScopeWithAlwaysIterableForeach: true
+	polluteScopeWithBlock: true
+	checkExplicitMixedMissingReturn: true
+	checkFunctionNameCase	: true
+	checkInternalClassCaseSensitivity: true
+	reportMaybesInMethodSignatures: true
+	reportMaybesInPropertyPhpDocTypes: true
+	reportStaticMethodSignatures: true
+	checkTooWideReturnTypesInProtectedAndPublicMethods: true
+	checkTooWideParameterOutInProtectedAndPublicMethods: true
+	checkTooWideThrowTypesInProtectedAndPublicMethods: true
+	checkUninitializedProperties: true
+	checkDynamicProperties: true
+	rememberPossiblyImpureFunctionValues: true
+	checkBenevolentUnionTypes: true
+	reportPossiblyNonexistentGeneralArrayOffset: true
+	reportPossiblyNonexistentConstantArrayOffset: true
+	reportAlwaysTrueInLastCondition: true
+	reportNonIntStringArrayKey: true
+	reportUnsafeArrayStringKeyCasting: detect
+	reportWrongPhpDocTypeInVarTag: true
+	reportAnyTypeWideningInVarTag: true
+	checkMissingOverrideMethodAttribute: true
+	checkMissingOverridePropertyAttribute: true
+	checkStrictPrintfPlaceholderTypes: true
 	level: 10
 	paths:
 		- src
