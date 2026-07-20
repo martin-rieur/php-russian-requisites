@@ -194,12 +194,14 @@ final readonly class Inn implements ValueObject
     private function calculateChecksum(int ...$weights): int
     {
         $sum = 0;
+        $position = 0;
 
-        for ($position = 0; $position < count($weights); $position++) {
-            $weight = $weights[$position];
-            $digit  = $this->getDigit($position);
+        foreach ($weights as $weight) {
+            $digit = $this->getDigit($position);
 
             $sum += $weight * $digit;
+
+            $position++;
         }
 
         return $sum;
