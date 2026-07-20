@@ -39,13 +39,15 @@ final readonly class FullInn implements ValueObject
         string $full_inn_string,
         string $separator = self::DEFAULT_SEPARATOR,
     ): static {
-        [$inn_string, $kpp_string] = self::splitFullInnString($full_inn_string, $separator);
+        $segments = self::splitFullInnString($full_inn_string, $separator);
+        $inn_string = $segments['inn'];
+        $kpp_string = $segments['kpp'];
 
         return self::createFromStrings($inn_string, $kpp_string);
     }
 
     /**
-     * @return string[]
+     * @return array{inn:string,kpp:string}
      */
     private static function splitFullInnString(
         string $full_inn_string,
@@ -53,11 +55,12 @@ final readonly class FullInn implements ValueObject
     ): array {
         self::validateSeparator($separator);
 
-        $segments   = explode($separator, $full_inn_string);
-        $inn_string = $segments[0];
-        $kpp_string = $segments[1] ?? '';
+        $segments = explode($separator, $full_inn_string);
 
-        return [$inn_string, $kpp_string];
+        return [
+            'inn' => $segments[0],
+            'kpp' => $segments[1] ?? '',
+        ];
     }
 
     /**
