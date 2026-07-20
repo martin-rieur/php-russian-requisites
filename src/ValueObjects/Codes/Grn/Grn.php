@@ -27,6 +27,9 @@ readonly class Grn implements ValueObject
     private const int LENGTH_FOR_COMPANY      = 13;
     private const int LENGTH_FOR_ENTREPRENEUR = 15;
 
+    private const array COMPANY_CLASSIFICATION_ATTRIBUTES      = ['1', '2', '5', '6', '7', '8', '9'];
+    private const array ENTREPRENEUR_CLASSIFICATION_ATTRIBUTES = ['3', '4'];
+
     private string $grn;
 
     #[Override]
@@ -156,7 +159,25 @@ readonly class Grn implements ValueObject
 
     protected function isValidClassificationAttribute(): bool
     {
-        return true;
+        return match (true) {
+            $this->isLengthForCompany()      => $this->isValidCompanyClassificationAttribute(),
+            $this->isLengthForEntrepreneur() => $this->isValidEntrepreneurClassificationAttribute(),
+            default => false,
+        };
+    }
+
+    protected function isValidCompanyClassificationAttribute(): bool
+    {
+        $ca = $this->getClassificationAttribute();
+
+        return in_array($ca, self::COMPANY_CLASSIFICATION_ATTRIBUTES, true);
+    }
+
+    protected function isValidEntrepreneurClassificationAttribute(): bool
+    {
+        $ca = $this->getClassificationAttribute();
+
+        return in_array($ca, self::ENTREPRENEUR_CLASSIFICATION_ATTRIBUTES, true);
     }
 
     private function isValidRegionCode(): bool

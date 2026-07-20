@@ -78,42 +78,25 @@ final class GrnTest extends AbstractGrnTestCase
 
     public function testGetClassificationAttribute(): void
     {
-        $valid_company_grn_strings = [
-            '1' => '1234561234566',
-            '2' => '2213213213211',
-            '3' => '3213213213210',
-            '4' => '4213213213210',
-            '5' => '5234561234562',
-            '6' => '6213213213218',
-            '7' => '7213213213217',
-            '8' => '8213213213216',
-            '9' => '9213213213215',
+        $valid_grn_strings = [
+            ['1', '1234561234566'],
+            ['2', '2213213213211'],
+            ['5', '5234561234562'],
+            ['6', '6213213213218'],
+            ['7', '7213213213217'],
+            ['8', '8213213213216'],
+            ['9', '9213213213215'],
+            ['3', '323456712345672'],
+            ['4', '423456712345672'],
         ];
 
-        $valid_entrepreneur_grn_strings = [
-            '1' => '123456712345678',
-            '2' => '223456712345675',
-            '3' => '323456712345672',
-            '4' => '423456712345672',
-            '5' => '523456712345679',
-            '6' => '623456712345676',
-            '7' => '723456712345673',
-            '8' => '823456712345670',
-            '9' => '923456712345670',
-        ];
-
-        foreach ($valid_company_grn_strings as $classification_attribute => $valid_grn_string) {
+        foreach ($valid_grn_strings as [$classification_attribute, $valid_grn_string]) {
             $grn = Grn::createFromString($valid_grn_string);
-            $ca  = (string) $classification_attribute;
 
-            self::assertSame($ca, $grn->getClassificationAttribute());
-        }
-
-        foreach ($valid_entrepreneur_grn_strings as $classification_attribute => $valid_grn_string) {
-            $grn = Grn::createFromString($valid_grn_string);
-            $ca  = (string) $classification_attribute;
-
-            self::assertSame($ca, $grn->getClassificationAttribute());
+            self::assertSame(
+                $classification_attribute,
+                $grn->getClassificationAttribute()
+            );
         }
     }
 
