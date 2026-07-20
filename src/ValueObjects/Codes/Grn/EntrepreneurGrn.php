@@ -26,9 +26,7 @@ final readonly class EntrepreneurGrn extends Grn
     #[Override]
     protected function isValidClassificationAttribute(): bool
     {
-        $ca = $this->getClassificationAttribute();
-
-        return '3' === $ca || '4' === $ca;
+        return $this->isValidEntrepreneurClassificationAttribute();
     }
 
     public function toPrimary(): Ogrnip
