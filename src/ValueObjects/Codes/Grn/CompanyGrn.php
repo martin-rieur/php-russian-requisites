@@ -26,15 +26,7 @@ final readonly class CompanyGrn extends Grn
     #[Override]
     protected function isValidClassificationAttribute(): bool
     {
-        $ca = $this->getClassificationAttribute();
-
-        return '1' === $ca
-            || '2' === $ca
-            || '5' === $ca
-            || '6' === $ca
-            || '7' === $ca
-            || '8' === $ca
-            || '9' === $ca;
+        return $this->isValidCompanyClassificationAttribute();
     }
 
     public function toPrimary(): Ogrn
