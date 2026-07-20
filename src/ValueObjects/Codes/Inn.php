@@ -6,6 +6,7 @@ namespace PhpRussianRequisites\ValueObjects\Codes;
 
 use Override;
 use PhpRussianRequisites\Exceptions\BadValueException;
+use PhpRussianRequisites\Exceptions\OutOfRangeOfStringException;
 use PhpRussianRequisites\Interfaces\ValueObject;
 
 /**
@@ -216,7 +217,17 @@ final readonly class Inn implements ValueObject
 
     private function getDigit(int $position): int
     {
-        return (int) $this->inn[$position];
+        $digit =
+            $this->inn[$position]
+            ?? throw new OutOfRangeOfStringException(
+                sprintf(
+                    'Попытка получить из строки "%s", содержащей ИНН, символ на позиции %d',
+                    $this->inn,
+                    $position,
+                ),
+            );
+
+        return (int) $digit;
     }
 
     private function length(): int
