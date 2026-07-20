@@ -65,6 +65,7 @@ final class GrnTest extends AbstractGrnTestCase
         return [];
     }
 
+    #[Override]
     public function testInvalidLength(): void
     {
         self::expectException(BadValueException::class);
