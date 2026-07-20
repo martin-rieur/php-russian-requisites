@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace PhpRussianRequisites\Interfaces;
 
-interface ValueObject
+use Stringable;
+
+interface ValueObject extends Stringable
 {
     public static function createFromString(string $value): static;
 
-    public function __toString(): string;
     public function getValue(): int|float|string;
 }
