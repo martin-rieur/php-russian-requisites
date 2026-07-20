@@ -23,8 +23,8 @@ final class FullInnTest extends TestCase
 
     public function testCompanyInnWithoutKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
 
         $inn_string = self::VALID_COMPANY_INN;
 
@@ -33,8 +33,8 @@ final class FullInnTest extends TestCase
 
     public function testPersonInnWithKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('У физических лиц не должен быть указан КПП');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('У физических лиц не должен быть указан КПП');
 
         $inn_string = self::VALID_PERSON_INN;
         $kpp_string = self::VALID_KPP;
@@ -49,7 +49,7 @@ final class FullInnTest extends TestCase
 
         $full_inn = FullInn::createFromStrings($inn_string, $kpp_string);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testPersonInnWithoutKpp(): void
@@ -58,13 +58,13 @@ final class FullInnTest extends TestCase
 
         $full_inn = FullInn::createFromStrings($inn_string);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testEmptyStringInsteadInn(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $empty_string = '';
 
@@ -73,8 +73,8 @@ final class FullInnTest extends TestCase
 
     public function testEmptyStringInsteadInnWithKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $empty_string = '';
         $kpp_string   = self::VALID_KPP;
@@ -84,8 +84,8 @@ final class FullInnTest extends TestCase
 
     public function testSpaceInsteadInnWithoutKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $space = ' ';
 
@@ -94,8 +94,8 @@ final class FullInnTest extends TestCase
 
     public function testSpaceInsteadInnWithKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $space      = ' ';
         $kpp_string = self::VALID_KPP;

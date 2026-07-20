@@ -24,8 +24,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testCompanyGetValueWithInvalidLetterSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -37,8 +37,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testCompanyGetValueInvalidNumericSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -50,8 +50,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testCompanyGetValueInvalidEmptyStringSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен быть пустой строкой'
         );
 
@@ -63,8 +63,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testPersonGetValueWithInvalidLetterSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -76,8 +76,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testPersonGetValueInvalidNumericSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -89,8 +89,8 @@ final class FullInnGetValueTest extends TestCase
 
     public function testPersonGetValueInvalidEmptyStringSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен быть пустой строкой'
         );
 
@@ -107,7 +107,7 @@ final class FullInnGetValueTest extends TestCase
 
         $full_inn->getValue($separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testPersonGetValueWithValidSeparator(): void
@@ -117,7 +117,7 @@ final class FullInnGetValueTest extends TestCase
 
         $full_inn->getValue($separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testToString(): void
@@ -130,7 +130,7 @@ final class FullInnGetValueTest extends TestCase
 
         $full_inn = FullInn::createFromStrings($inn_string, $kpp_string);
 
-        $this->assertSame($full_inn_string, (string) $full_inn);
+        self::assertSame($full_inn_string, (string) $full_inn);
     }
 
     private function getCompanyFullInn(): FullInn

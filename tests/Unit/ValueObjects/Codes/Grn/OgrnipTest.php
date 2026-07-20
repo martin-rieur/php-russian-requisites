@@ -69,7 +69,7 @@ final class OgrnipTest extends AbstractGrnTestCase
         $ogrnip_string = '323456712345672';
         $ogrnip        = Ogrnip::createFromString($ogrnip_string);
 
-        $this->assertSame('3', $ogrnip->getClassificationAttribute());
+        self::assertSame('3', $ogrnip->getClassificationAttribute());
     }
 
     public function testGetYear(): void
@@ -77,7 +77,7 @@ final class OgrnipTest extends AbstractGrnTestCase
         $ogrnip_string = '323456712345672';
         $ogrnip        = Ogrnip::createFromString($ogrnip_string);
 
-        $this->assertSame('23', $ogrnip->getYear());
+        self::assertSame('23', $ogrnip->getYear());
     }
 
     public function testGetRegionCode(): void
@@ -85,6 +85,6 @@ final class OgrnipTest extends AbstractGrnTestCase
         $ogrnip_string = '323456712345672';
         $ogrnip        = Ogrnip::createFromString($ogrnip_string);
 
-        $this->assertSame('45', $ogrnip->getRegionCode());
+        self::assertSame('45', $ogrnip->getRegionCode());
     }
 }

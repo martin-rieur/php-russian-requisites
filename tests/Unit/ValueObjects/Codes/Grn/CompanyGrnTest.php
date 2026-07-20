@@ -74,7 +74,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '1234561234566';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('1', $grn->getClassificationAttribute());
+        self::assertSame('1', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeTwo(): void
@@ -82,7 +82,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '2213213213211';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('2', $grn->getClassificationAttribute());
+        self::assertSame('2', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeFive(): void
@@ -90,7 +90,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '5234561234562';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('5', $grn->getClassificationAttribute());
+        self::assertSame('5', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeSix(): void
@@ -98,7 +98,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '6213213213218';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('6', $grn->getClassificationAttribute());
+        self::assertSame('6', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeSeven(): void
@@ -106,7 +106,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '7213213213217';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('7', $grn->getClassificationAttribute());
+        self::assertSame('7', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeEight(): void
@@ -114,7 +114,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '8213213213216';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('8', $grn->getClassificationAttribute());
+        self::assertSame('8', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeNine(): void
@@ -122,7 +122,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '9213213213215';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('9', $grn->getClassificationAttribute());
+        self::assertSame('9', $grn->getClassificationAttribute());
     }
 
     public function testToPrimaryFailure(): void
@@ -141,7 +141,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
             }
         }
 
-        $this->assertSame(count($valid_grn_strings), $catches_count);
+        self::assertSame(count($valid_grn_strings), $catches_count);
     }
 
     public function testToPrimary(): void
@@ -151,7 +151,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         foreach ($valid_grn_strings as $valid_grn_string) {
             $grn = CompanyGrn::createFromString($valid_grn_string);
 
-            $this->assertInstanceOf(Ogrn::class, $grn->toPrimary());
+            self::assertInstanceOf(Ogrn::class, $grn->toPrimary());
         }
     }
 
@@ -160,7 +160,7 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '5169724687116';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('16', $grn->getYear());
+        self::assertSame('16', $grn->getYear());
     }
 
     public function testGetRegionCode(): void
@@ -168,6 +168,6 @@ final class CompanyGrnTest extends AbstractGrnTestCase
         $grn_string = '5169724687116';
         $grn        = CompanyGrn::createFromString($grn_string);
 
-        $this->assertSame('97', $grn->getRegionCode());
+        self::assertSame('97', $grn->getRegionCode());
     }
 }

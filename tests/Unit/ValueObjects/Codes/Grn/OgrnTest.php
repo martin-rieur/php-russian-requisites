@@ -69,7 +69,7 @@ final class OgrnTest extends AbstractGrnTestCase
         $ogrn_string = '1234561234566';
         $ogrn        = Ogrn::createFromString($ogrn_string);
 
-        $this->assertSame('1', $ogrn->getClassificationAttribute());
+        self::assertSame('1', $ogrn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeFive(): void
@@ -77,7 +77,7 @@ final class OgrnTest extends AbstractGrnTestCase
         $ogrn_string = '5234561234562';
         $ogrn        = Ogrn::createFromString($ogrn_string);
 
-        $this->assertSame('5', $ogrn->getClassificationAttribute());
+        self::assertSame('5', $ogrn->getClassificationAttribute());
     }
 
     public function testGetYear(): void
@@ -85,7 +85,7 @@ final class OgrnTest extends AbstractGrnTestCase
         $ogrn_string = '1234561234566';
         $ogrn        = Ogrn::createFromString($ogrn_string);
 
-        $this->assertSame('23', $ogrn->getYear());
+        self::assertSame('23', $ogrn->getYear());
     }
 
     public function testGetRegionCode(): void
@@ -93,6 +93,6 @@ final class OgrnTest extends AbstractGrnTestCase
         $ogrn_string = '1234561234566';
         $ogrn        = Ogrn::createFromString($ogrn_string);
 
-        $this->assertSame('45', $ogrn->getRegionCode());
+        self::assertSame('45', $ogrn->getRegionCode());
     }
 }

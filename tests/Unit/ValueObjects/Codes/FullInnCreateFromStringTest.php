@@ -33,8 +33,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testEmptyStringInsteadFullInn(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $empty_string = '';
 
@@ -46,8 +46,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testStringOfSpacesInsteadFullInn(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $string_of_spaces = '   ';
 
@@ -59,8 +59,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testSplitStringWithOnlySeparator(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $separator = self::VALID_SEPARATOR;
         $string_with_only_separator = self::VALID_SEPARATOR;
@@ -82,7 +82,7 @@ final class FullInnCreateFromStringTest extends TestCase
 
         $full_inn = FullInn::createFromString($full_inn_string_with_spaces, $separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     /**
@@ -94,7 +94,7 @@ final class FullInnCreateFromStringTest extends TestCase
 
         $full_inn = FullInn::createFromString($full_inn_string_with_spaces);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     /**
@@ -102,8 +102,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testCompanySplitFullInnStringWithoutKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
 
         $separator       = self::VALID_SEPARATOR;
         $full_inn_string = self::VALID_COMPANY_INN . $separator;
@@ -116,8 +116,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testCompanySplitFullInnStringWithSpacesInsteadKpp(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('У юридических лиц должен быть указан КПП');
 
         $separator       = self::VALID_SEPARATOR;
         $full_inn_string = self::VALID_COMPANY_INN . $separator . '  ';
@@ -130,8 +130,8 @@ final class FullInnCreateFromStringTest extends TestCase
      */
     public function testCompanySplitFullInnStringWithSpacesInsteadInn(): void
     {
-        $this->expectException(ViolationOfInternalDataConsistencyException::class);
-        $this->expectExceptionMessageIsOrContains('Должен быть указан ИНН');
+        self::expectException(ViolationOfInternalDataConsistencyException::class);
+        self::expectExceptionMessageIsOrContains('Должен быть указан ИНН');
 
         $separator       = self::VALID_SEPARATOR;
         $full_inn_string = '  ' . $separator . self::VALID_KPP;
@@ -149,13 +149,13 @@ final class FullInnCreateFromStringTest extends TestCase
 
         $full_inn = FullInn::createFromString($full_inn_string, $separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testCompanySplitWithInvalidLetterSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -167,8 +167,8 @@ final class FullInnCreateFromStringTest extends TestCase
 
     public function testCompanySplitWithInvalidNumericSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -180,8 +180,8 @@ final class FullInnCreateFromStringTest extends TestCase
 
     public function testCompanySplitWithInvalidEmptyStringSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен быть пустой строкой'
         );
 
@@ -193,8 +193,8 @@ final class FullInnCreateFromStringTest extends TestCase
 
     public function testPersonSplitWithInvalidLetterSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -206,8 +206,8 @@ final class FullInnCreateFromStringTest extends TestCase
 
     public function testPersonSplitWithInvalidNumericSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы'
         );
 
@@ -219,8 +219,8 @@ final class FullInnCreateFromStringTest extends TestCase
 
     public function testPersonSplitWithInvalidEmptyStringSeparator(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains(
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains(
             'Разделитель ИНН и КПП не должен быть пустой строкой'
         );
 
@@ -237,7 +237,7 @@ final class FullInnCreateFromStringTest extends TestCase
 
         $full_inn = FullInn::createFromString($full_inn_string, $separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 
     public function testPersonSplitFullInnWithValidSeparator(): void
@@ -247,6 +247,6 @@ final class FullInnCreateFromStringTest extends TestCase
 
         $full_inn = FullInn::createFromString($full_inn_string, $separator);
 
-        $this->assertNotEmpty($full_inn);
+        self::assertNotEmpty($full_inn);
     }
 }

@@ -74,7 +74,7 @@ final class EntrepreneurGrnTest extends AbstractGrnTestCase
         $grn_string = '323456712345672';
         $grn        = EntrepreneurGrn::createFromString($grn_string);
 
-        $this->assertSame('3', $grn->getClassificationAttribute());
+        self::assertSame('3', $grn->getClassificationAttribute());
     }
 
     public function testGetClassificationAttributeFour(): void
@@ -82,12 +82,12 @@ final class EntrepreneurGrnTest extends AbstractGrnTestCase
         $grn_string = '423456712345672';
         $grn        = EntrepreneurGrn::createFromString($grn_string);
 
-        $this->assertSame('4', $grn->getClassificationAttribute());
+        self::assertSame('4', $grn->getClassificationAttribute());
     }
 
     public function testCastingToPrimaryFailure(): void
     {
-        $this->expectException(TypeCastingException::class);
+        self::expectException(TypeCastingException::class);
 
         $valid_grn_string = '423456712345672';
         $grn              = EntrepreneurGrn::createFromString($valid_grn_string);
@@ -100,7 +100,7 @@ final class EntrepreneurGrnTest extends AbstractGrnTestCase
         $grn_string = '323456712345672';
         $grn        = EntrepreneurGrn::createFromString($grn_string);
 
-        $this->assertInstanceOf(Ogrnip::class, $grn->toPrimary());
+        self::assertInstanceOf(Ogrnip::class, $grn->toPrimary());
     }
 
     public function testGetYear(): void
@@ -108,7 +108,7 @@ final class EntrepreneurGrnTest extends AbstractGrnTestCase
         $grn_string = '368137541618722';
         $grn        = EntrepreneurGrn::createFromString($grn_string);
 
-        $this->assertSame('68', $grn->getYear());
+        self::assertSame('68', $grn->getYear());
     }
 
     public function testGetRegionCode(): void
@@ -116,6 +116,6 @@ final class EntrepreneurGrnTest extends AbstractGrnTestCase
         $grn_string = '368137541618722';
         $grn        = EntrepreneurGrn::createFromString($grn_string);
 
-        $this->assertSame('13', $grn->getRegionCode());
+        self::assertSame('13', $grn->getRegionCode());
     }
 }

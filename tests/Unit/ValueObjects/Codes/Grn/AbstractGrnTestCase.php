@@ -39,8 +39,8 @@ abstract class AbstractGrnTestCase extends TestCase
 
     public function testEmptyString(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('не может быть пустой строкой');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('не может быть пустой строкой');
 
         $empty_string = '';
 
@@ -49,7 +49,7 @@ abstract class AbstractGrnTestCase extends TestCase
 
     public function testStringOfThirteenZeros(): void
     {
-        $this->expectException(BadValueException::class);
+        self::expectException(BadValueException::class);
 
         $string_of_thirteen_zeros = str_repeat('0', $this->validLength());
 
@@ -58,8 +58,8 @@ abstract class AbstractGrnTestCase extends TestCase
 
     public function testInvalidSymbol(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('должен содержать только цифры');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('должен содержать только цифры');
 
         $invalid_grn_string = str_repeat('A', $this->validLength());
 
@@ -72,13 +72,13 @@ abstract class AbstractGrnTestCase extends TestCase
 
         $grn = $this->grnClass()::createFromString($valid_grn_string);
 
-        $this->assertNotEmpty($grn);
+        self::assertNotEmpty($grn);
     }
 
     public function testInvalidLength(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('должен иметь длину ' . $this->validLength() . ' цифр');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('должен иметь длину ' . $this->validLength() . ' цифр');
 
         $invalid_grn_string = str_repeat('1', $this->validLength() + 3);
 
@@ -87,8 +87,8 @@ abstract class AbstractGrnTestCase extends TestCase
 
     public function testInvalidChecksum(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверная контрольная сумма');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверная контрольная сумма');
 
         $invalid_grn_string = $this->getGrnStringWithInvalidChecksum();
 
@@ -97,8 +97,8 @@ abstract class AbstractGrnTestCase extends TestCase
 
     public function testInvalidRegionCode(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('неверно указан код региона РФ');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('неверно указан код региона РФ');
 
         $invalid_grn_string = $this->getGrnStringWithInvalidRegionCode();
 
@@ -121,13 +121,13 @@ abstract class AbstractGrnTestCase extends TestCase
         $valid_grn_strings = $this->getValidNotPrimaryGrnStrings();
 
         if (0 === count($valid_grn_strings)) {
-            $this->markTestSkipped();
+            self::markTestSkipped();
         }
 
         foreach ($valid_grn_strings as $valid_grn_string) {
             $grn = $this->grnClass()::createFromString($valid_grn_string);
 
-            $this->assertFalse($grn->isPrimary());
+            self::assertFalse($grn->isPrimary());
         }
     }
 
@@ -136,13 +136,13 @@ abstract class AbstractGrnTestCase extends TestCase
         $valid_grn_strings = $this->getValidPrimaryGrnStrings();
 
         if (0 === count($valid_grn_strings)) {
-            $this->markTestSkipped();
+            self::markTestSkipped();
         }
 
         foreach ($valid_grn_strings as $valid_grn_string) {
             $grn = $this->grnClass()::createFromString($valid_grn_string);
 
-            $this->assertTrue($grn->isPrimary());
+            self::assertTrue($grn->isPrimary());
         }
     }
 
@@ -151,7 +151,7 @@ abstract class AbstractGrnTestCase extends TestCase
         $grn_string = $this->getValidGrnString();
         $grn        = $this->grnClass()::createFromString($grn_string);
 
-        $this->assertSame($grn_string, $grn->getValue());
+        self::assertSame($grn_string, $grn->getValue());
     }
 
     public function testToString(): void
@@ -159,7 +159,7 @@ abstract class AbstractGrnTestCase extends TestCase
         $grn_string = $this->getValidGrnString();
         $grn        = $this->grnClass()::createFromString($grn_string);
 
-        $this->assertSame($grn_string, (string) $grn);
+        self::assertSame($grn_string, (string) $grn);
     }
 
     /**
@@ -185,7 +185,7 @@ abstract class AbstractGrnTestCase extends TestCase
             }
         }
 
-        $this->assertSame(count($invalid_grn_strings), $catches_count);
+        self::assertSame(count($invalid_grn_strings), $catches_count);
     }
 
     final protected function getValidGrnString(): string

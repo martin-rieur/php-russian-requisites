@@ -67,8 +67,8 @@ final class GrnTest extends AbstractGrnTestCase
 
     public function testInvalidLength(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('должен иметь длину 13 или 15 цифр');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('должен иметь длину 13 или 15 цифр');
 
         $invalid_grn_string = str_repeat('1', 20);
 
@@ -105,14 +105,14 @@ final class GrnTest extends AbstractGrnTestCase
             $grn = Grn::createFromString($valid_grn_string);
             $ca  = (string) $classification_attribute;
 
-            $this->assertSame($ca, $grn->getClassificationAttribute());
+            self::assertSame($ca, $grn->getClassificationAttribute());
         }
 
         foreach ($valid_entrepreneur_grn_strings as $classification_attribute => $valid_grn_string) {
             $grn = Grn::createFromString($valid_grn_string);
             $ca  = (string) $classification_attribute;
 
-            $this->assertSame($ca, $grn->getClassificationAttribute());
+            self::assertSame($ca, $grn->getClassificationAttribute());
         }
     }
 
@@ -121,7 +121,7 @@ final class GrnTest extends AbstractGrnTestCase
         $grn_string = '1618374665248';
         $grn        = Grn::createFromString($grn_string);
 
-        $this->assertSame('61', $grn->getYear());
+        self::assertSame('61', $grn->getYear());
     }
 
     public function testGetRegionCode(): void
@@ -129,7 +129,7 @@ final class GrnTest extends AbstractGrnTestCase
         $grn_string = '1618374665248';
         $grn        = Grn::createFromString($grn_string);
 
-        $this->assertSame('83', $grn->getRegionCode());
+        self::assertSame('83', $grn->getRegionCode());
     }
 
     public function testIsCompanyTrue(): void
@@ -147,7 +147,7 @@ final class GrnTest extends AbstractGrnTestCase
         foreach ($valid_company_grn_strings as $valid_grn_string) {
             $grn = Grn::createFromString($valid_grn_string);
 
-            $this->assertTrue($grn->isCompany());
+            self::assertTrue($grn->isCompany());
         }
     }
 
@@ -161,7 +161,7 @@ final class GrnTest extends AbstractGrnTestCase
         foreach ($valid_entrepreneur_grn_strings as $valid_grn_string) {
             $grn = Grn::createFromString($valid_grn_string);
 
-            $this->assertFalse($grn->isCompany());
+            self::assertFalse($grn->isCompany());
         }
     }
 
@@ -175,7 +175,7 @@ final class GrnTest extends AbstractGrnTestCase
         foreach ($valid_entrepreneur_grn_strings as $valid_grn_string) {
             $grn = Grn::createFromString($valid_grn_string);
 
-            $this->assertTrue($grn->isEntrepreneur());
+            self::assertTrue($grn->isEntrepreneur());
         }
     }
 
@@ -194,7 +194,7 @@ final class GrnTest extends AbstractGrnTestCase
         foreach ($valid_company_grn_strings as $valid_grn_string) {
             $grn = Grn::createFromString($valid_grn_string);
 
-            $this->assertFalse($grn->isEntrepreneur());
+            self::assertFalse($grn->isEntrepreneur());
         }
     }
 }

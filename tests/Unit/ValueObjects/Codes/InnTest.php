@@ -21,13 +21,13 @@ final class InnTest extends TestCase
 
         $inn = Inn::createFromString($valid_inn_string_with_spaces);
 
-        $this->assertNotEmpty($inn);
+        self::assertNotEmpty($inn);
     }
 
     public function testEmptyString(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('не может быть пустой строкой');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('не может быть пустой строкой');
 
         $empty_string = '';
 
@@ -36,8 +36,8 @@ final class InnTest extends TestCase
 
     public function testInvalidSymbol(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('только из цифр');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('только из цифр');
 
         $invalid_inn_string = str_repeat('a', 10);
 
@@ -46,8 +46,8 @@ final class InnTest extends TestCase
 
     public function testInvalidLength(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('должен иметь длину 10 или 12');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('должен иметь длину 10 или 12');
 
         $invalid_inn_string = '123';
 
@@ -56,8 +56,8 @@ final class InnTest extends TestCase
 
     public function testInvalidCompanyChecksum(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('контрольная сумма ИНН юридического лица');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('контрольная сумма ИНН юридического лица');
 
         $invalid_inn_string = '9876543213';
 
@@ -66,8 +66,8 @@ final class InnTest extends TestCase
 
     public function testInvalidPersonChecksum(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('контрольная сумма ИНН физического лица');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('контрольная сумма ИНН физического лица');
 
         $invalid_inn_string = '987654321012';
 
@@ -76,8 +76,8 @@ final class InnTest extends TestCase
 
     public function testInvalidRegionCode(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('первые две цифры не могут быть 00');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('первые две цифры не могут быть 00');
 
         $invalid_inn_string = '0012345673';
 
@@ -86,7 +86,7 @@ final class InnTest extends TestCase
 
     public function testStringOfTenZeros(): void
     {
-        $this->expectException(BadValueException::class);
+        self::expectException(BadValueException::class);
 
         $string_of_ten_zeros = str_repeat('0', 10);
 
@@ -95,7 +95,7 @@ final class InnTest extends TestCase
 
     public function testStringOfTwelveZeros(): void
     {
-        $this->expectException(BadValueException::class);
+        self::expectException(BadValueException::class);
 
         $string_of_twelve_zeros = str_repeat('0', 12);
 
@@ -106,42 +106,42 @@ final class InnTest extends TestCase
     {
         $inn = Inn::createFromString(self::VALID_COMPANY_INN);
 
-        $this->assertSame(self::VALID_COMPANY_INN, $inn->getValue());
+        self::assertSame(self::VALID_COMPANY_INN, $inn->getValue());
     }
 
     public function testGetRegionCode(): void
     {
         $inn = Inn::createFromString(self::VALID_COMPANY_INN);
 
-        $this->assertSame('98', $inn->getRegionCode());
+        self::assertSame('98', $inn->getRegionCode());
     }
 
     public function testIsCompanyTrue(): void
     {
         $inn = Inn::createFromString(self::VALID_COMPANY_INN);
 
-        $this->assertTrue($inn->isCompany());
+        self::assertTrue($inn->isCompany());
     }
 
     public function testIsCompanyFalse(): void
     {
         $inn = Inn::createFromString(self::VALID_PERSON_INN);
 
-        $this->assertFalse($inn->isCompany());
+        self::assertFalse($inn->isCompany());
     }
 
     public function testIsPersonTrue(): void
     {
         $inn = Inn::createFromString(self::VALID_PERSON_INN);
 
-        $this->assertTrue($inn->isPerson());
+        self::assertTrue($inn->isPerson());
     }
 
     public function testIsPersonFalse(): void
     {
         $inn = Inn::createFromString(self::VALID_COMPANY_INN);
 
-        $this->assertFalse($inn->isPerson());
+        self::assertFalse($inn->isPerson());
     }
 
     public function testToString(): void
@@ -150,6 +150,6 @@ final class InnTest extends TestCase
 
         $inn = Inn::createFromString($inn_string);
 
-        $this->assertSame($inn_string, (string) $inn);
+        self::assertSame($inn_string, (string) $inn);
     }
 }

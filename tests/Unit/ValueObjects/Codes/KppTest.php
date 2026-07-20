@@ -20,13 +20,13 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($valid_kpp_string_with_spaces);
 
-        $this->assertNotEmpty($kpp);
+        self::assertNotEmpty($kpp);
     }
 
     public function testEmptyString(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('не может быть пустой строкой');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('не может быть пустой строкой');
 
         $empty_string = '';
 
@@ -35,8 +35,8 @@ final class KppTest extends TestCase
 
     public function testInvalidSymbol(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('только цифры и заглавные латинские буквы');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('только цифры и заглавные латинские буквы');
 
         $invalid_kpp_string = '123-56789';
 
@@ -45,8 +45,8 @@ final class KppTest extends TestCase
 
     public function testInvalidLength(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('должен состоять из 9 символов');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('должен состоять из 9 символов');
 
         $invalid_kpp_string = '1235678';
 
@@ -55,8 +55,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInFirstPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = 'A23456789';
 
@@ -65,8 +65,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInSecondPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '1B3456789';
 
@@ -75,8 +75,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInThirdPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '12C456789';
 
@@ -85,8 +85,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInFourthPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '123D56789';
 
@@ -95,8 +95,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInSeventhPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '123456G89';
 
@@ -105,8 +105,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInEighthPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '1234567H9';
 
@@ -115,8 +115,8 @@ final class KppTest extends TestCase
 
     public function testInvalidFormatWithLetterInNinthPosition(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('Неверный формат');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('Неверный формат');
 
         $invalid_kpp_string = '12345678I';
 
@@ -125,8 +125,8 @@ final class KppTest extends TestCase
 
     public function testInvalidRegionCode(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('код региона');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('код региона');
 
         $invalid_kpp_string = '001234567';
 
@@ -135,7 +135,7 @@ final class KppTest extends TestCase
 
     public function testStringOfNineZeros(): void
     {
-        $this->expectException(BadValueException::class);
+        self::expectException(BadValueException::class);
 
         $string_of_nine_zeros = str_repeat('0', 9);
 
@@ -144,8 +144,8 @@ final class KppTest extends TestCase
 
     public function testInvalidReasonForRegistration(): void
     {
-        $this->expectException(BadValueException::class);
-        $this->expectExceptionMessageIsOrContains('причина постановки на учёт');
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageIsOrContains('причина постановки на учёт');
 
         $invalid_kpp_string = '123400789';
 
@@ -158,7 +158,7 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($valid_kpp_string);
 
-        $this->assertNotEmpty($kpp);
+        self::assertNotEmpty($kpp);
     }
 
     public function testValidFormatWithLetterInFifthPosition(): void
@@ -167,7 +167,7 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($valid_kpp_string);
 
-        $this->assertNotEmpty($kpp);
+        self::assertNotEmpty($kpp);
     }
 
     public function testValidFormatWithLetterInSixthPosition(): void
@@ -176,7 +176,7 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($valid_kpp_string);
 
-        $this->assertNotEmpty($kpp);
+        self::assertNotEmpty($kpp);
     }
 
     public function testValidFormatWithLetterInFifthAndSixthPositions(): void
@@ -185,28 +185,28 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($valid_kpp_string);
 
-        $this->assertNotEmpty($kpp);
+        self::assertNotEmpty($kpp);
     }
 
     public function testGetValue(): void
     {
         $kpp = Kpp::createFromString(self::VALID_KPP);
 
-        $this->assertSame(self::VALID_KPP, $kpp->getValue());
+        self::assertSame(self::VALID_KPP, $kpp->getValue());
     }
 
     public function testGetRegionCode(): void
     {
         $kpp = Kpp::createFromString(self::VALID_KPP);
 
-        $this->assertSame('35', $kpp->getRegionCode());
+        self::assertSame('35', $kpp->getRegionCode());
     }
 
     public function testGetReasonForRegistration(): void
     {
         $kpp = Kpp::createFromString(self::VALID_KPP);
 
-        $this->assertSame('4V', $kpp->getReasonForRegistration());
+        self::assertSame('4V', $kpp->getReasonForRegistration());
     }
 
     public function testToString(): void
@@ -215,6 +215,6 @@ final class KppTest extends TestCase
 
         $kpp = Kpp::createFromString($kpp_string);
 
-        $this->assertSame($kpp_string, (string) $kpp);
+        self::assertSame($kpp_string, (string) $kpp);
     }
 }
