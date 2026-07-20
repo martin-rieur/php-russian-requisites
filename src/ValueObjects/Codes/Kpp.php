@@ -162,6 +162,7 @@ final readonly class Kpp implements ValueObject
         return substr($this->kpp, 4, 2);
     }
 
+    #[Override]
     public function __toString(): string
     {
         return $this->getValue();

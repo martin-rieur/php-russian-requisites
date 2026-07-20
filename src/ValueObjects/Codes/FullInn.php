@@ -150,6 +150,7 @@ final readonly class FullInn implements ValueObject
         return null !== $this->kpp;
     }
 
+    #[Override]
     public function __toString(): string
     {
         return $this->getValue();

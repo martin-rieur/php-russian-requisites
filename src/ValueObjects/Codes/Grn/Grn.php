@@ -193,6 +193,7 @@ readonly class Grn implements ValueObject
         return substr($this->grn, 3, 2);
     }
 
+    #[Override]
     public function __toString(): string
     {
         return $this->getValue();

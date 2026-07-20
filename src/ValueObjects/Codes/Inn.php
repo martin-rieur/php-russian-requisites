@@ -240,6 +240,7 @@ final readonly class Inn implements ValueObject
         return substr($this->inn, 0, 2);
     }
 
+    #[Override]
     public function __toString(): string
     {
         return $this->getValue();
