@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PhpRussianRequisites\Tests\Unit\ValueObjects\Codes;
 
+use PhpRussianRequisites\Exceptions\BadValueException;
 use PhpRussianRequisites\Exceptions\ViolationOfInternalDataConsistencyException;
 use PhpRussianRequisites\ValueObjects\Codes\FullInn;
 use PhpRussianRequisites\ValueObjects\Codes\Inn;
@@ -101,5 +102,22 @@ final class FullInnTest extends TestCase
         $kpp_string = self::VALID_KPP;
 
         FullInn::createFromStrings($space, $kpp_string);
+    }
+
+    public function testMultipleSeparators(): void
+    {
+        self::expectException(BadValueException::class);
+        self::expectExceptionMessageMatches('/разделитель "[^0-9A-Z]+" встречается больше одного раза/u');
+
+        $invalid_full_inn_string = implode(
+            FullInn::DEFAULT_SEPARATOR,
+            [
+                self::VALID_COMPANY_INN,
+                self::VALID_KPP,
+                self::VALID_COMPANY_INN,
+            ]
+        );
+
+        FullInn::createFromString($invalid_full_inn_string);
     }
 }

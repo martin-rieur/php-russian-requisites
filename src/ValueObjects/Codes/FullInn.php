@@ -20,6 +20,7 @@ final readonly class FullInn implements ValueObject
 
     private const ERROR_MESSAGE_SEPARATOR_IS_EMPTY_STRING   = 'Разделитель ИНН и КПП не должен быть пустой строкой.';
     private const ERROR_MESSAGE_INVALID_SYMBOL_IN_SEPARATOR = 'Разделитель ИНН и КПП не должен содержать цифры и заглавные латинские буквы.';
+    private const ERROR_MESSAGE_TOO_MANY_SEPARATORS         = 'В строке "%s", содержащей ИНН и КПП, разделитель "%s" встречается больше одного раза.';
 
     private const REGEX_INVALID_SYMBOLS_OF_SEPARATOR = '/[0-9A-Z]/u';
 
@@ -56,6 +57,16 @@ final readonly class FullInn implements ValueObject
         self::validateSeparator($separator);
 
         $segments = explode($separator, $full_inn_string);
+
+        if (count($segments) > 2) {
+            throw new BadValueException(
+                sprintf(
+                    self::ERROR_MESSAGE_TOO_MANY_SEPARATORS,
+                    $full_inn_string,
+                    $separator,
+                ),
+            );
+        }
 
         return [
             'inn' => $segments[0],
