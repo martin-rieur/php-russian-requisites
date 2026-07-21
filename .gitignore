@@ -1,6 +1,7 @@
 .phan/
 .phive/
 .phpunit.cache/
+.vscode
 vendor/
 metrics/
 coverage/
